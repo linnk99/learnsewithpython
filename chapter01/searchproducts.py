@@ -13,20 +13,16 @@ search_field = driver.find_element_by_name('q')
 search_field.clear()
 
 # enter search keyword and submit
-search_field.send_keys('phones')
+search_field.send_keys('tee')
 search_field.submit()
 
 # get all the anchor elements which have product names displayed
 # currently on result page using find_elements_by_xpath method
-products = driver.find_elements_by_xpath("//h2[@class='product-name']/a")
+products = driver.find_elements_by_xpath("//*[@id='top']/body/div/div[2]/div[2]/div/div[2]/div[2]/div[3]/div[1]/div[2]/div/p/strong")
+products_amount = products.text
 
-# get the number of anchor elements found
-print 'Found ' + str(len(products)) + ' products:'
-
-# iterate through each anchor element and
-# print the text that is name of the product
-for product in products:
-    print product.text
+# get the number of items found matching the search term
+print 'Found ' + products_amount
 
 # close the browser window
 driver.quit()
